@@ -10,7 +10,7 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: 'logo.png',
     contributors: false,
-    // lastUpdatedText: '上次更新',
+    lastUpdatedText: '上次更新',
     navbar: [
       getNavbar('指南', '/guide'),
       getNavbar('参考', '/reference'),
