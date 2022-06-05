@@ -12,8 +12,8 @@ export default defineUserConfig({
     contributors: false,
     lastUpdatedText: '上次更新',
     navbar: [
-      getNavbar('指南', '/guide'),
-      getNavbar('参考', '/reference'),
+      getNavbar('Vue系列', '/vue'),
+      getNavbar('Ubuntu系列', '/ubuntu'),
       {
         text: '我的主页',
         link: 'https://www.baidu.com/',
@@ -24,10 +24,11 @@ export default defineUserConfig({
       },
     ],
     sidebar: {
-      '/guide': [genSideBar('指南', false, '/guide')],
-      '/reference': [
-        genSideBar('VuePress参考', true, '/reference', [ 'bundler' ]),
-        genSideBar('打包工具参考', true, '/reference/bundler'),
+      '/vue': [genSideBar('Vue系列', false, '/vue')],
+      '/ubuntu': [
+        // genSideBar('VuePress参考', true, '/reference', [ 'bundler' ]),
+        // genSideBar('打包工具参考', true, '/reference/bundler'),
+		genSideBar('Ubuntu系列', true, '/ubuntu'),
       ],
     }
   })

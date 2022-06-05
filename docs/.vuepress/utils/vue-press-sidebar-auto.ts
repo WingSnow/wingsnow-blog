@@ -50,9 +50,9 @@ export function getNavbar(text: string, relativePath: string, excludes?: string[
 
     // 当一个目录下既有文件又有目录时，文件在前
     children.sort((a, b) => {
-        if(typeof a === 'string') {
+        if(typeof a === 'string' && typeof b !== 'string') {
             return -1
-        } else if(typeof b === 'string') {
+        } else if(typeof b === 'string' && typeof a !== 'string') {
             return 1
         }
         return 0
