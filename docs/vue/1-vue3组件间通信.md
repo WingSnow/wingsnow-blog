@@ -83,7 +83,7 @@ onMounted(() => {
 >
 > 点击Change按钮，注意 foo 和 bar 的差异。
 >
-> ![image-20220604143031764](assets\vue3组件间通信\image-20220604143031764.png)
+> ![image-20220604143031764](./assets/1-vue3组件间通信/image-20220604143031764.png)
 
 
 
@@ -164,7 +164,7 @@ const change = () => {
 </script>
 ```
 
-![image-20220604144423191](assets/vue3组件间通信/image-20220604144423191.png)
+![image-20220604144423191](./assets/1-vue3组件间通信/image-20220604144423191.png)
 
 点击子组件的 Change 按钮后，子组件的本地数据 LocalFoo 改变，然后通过 emit 调用父组件的 changeFoo 方法，父组件的数据 foo 改变。
 
@@ -233,7 +233,7 @@ defineExpose({
 
 以此点击①父组件的 Get ，②子组件的 Change ，③父组件的 Get ，④父组件的 Change ，⑤父组件的 Get ，显示结果如下图。
 
-![image-20220604151229541](assets/vue3组件间通信/image-20220604151229541.png)
+![image-20220604151229541](./assets/1-vue3组件间通信/image-20220604151229541.png)
 
 > 嵌套的 ref 会被解包（通过 reactive() ），因此在父组件中可以直接使用 childrenRef.value.foo 访问子组件的 foo 的值（而不需要childrenRef.value.foo.value）；同时内部 ref 可以保持响应性，因此步骤④中在父组件修改 childrenRef.value.foo 的值，子组件的 foo 的值也会更新，同时会被渲染。
 
@@ -289,7 +289,7 @@ defineExpose({
 </script>
 ```
 
-![image-20220604153753435](assets/vue3组件间通信/image-20220604153753435.png)
+![image-20220604153753435](./assets/1-vue3组件间通信/image-20220604153753435.png)
 
 
 
@@ -352,7 +352,7 @@ const click = () => {
 
 `defineEmits`使用**运行时声明**的对象语法时，可以设置验证函数。在开发模式下，如果该函数返回一个 falsy 值 (即验证失败)，一个控制台警告将会被抛出（但事件仍然会抛出）。
 
-![image-20220604161201631](assets/vue3组件间通信/image-20220604161201631.png)
+![image-20220604161201631](./assets/1-vue3组件间通信/image-20220604161201631.png)
 
 > emit() 不会有返回值。因为 emit 本质是抛出一个事件，父组件监听到该事件后调用的方法的返回值不会传递给事件本身。例如以下设计不会如期运行：
 >
@@ -443,7 +443,7 @@ const add = () => {
 </template>
 ```
 
-![image-20220604171105523](assets/vue3组件间通信/image-20220604171105523.png)
+![image-20220604171105523](./assets/1-vue3组件间通信/image-20220604171105523.png)
 
 在以上案例中，当我们点击父组件的 Minus 或者子组件的 Add 时，两个组件的数字会同步增减。
 
@@ -587,7 +587,7 @@ const value = computed({
 </template>
 ```
 
-![image-20220604174208304](assets/vue3组件间通信/image-20220604174208304.png)
+![image-20220604174208304](./assets/1-vue3组件间通信/image-20220604174208304.png)
 
 在以上例子中，当我们在修改父组件或者子组件的输入框内容时，另一个组件会同步更新。
 
