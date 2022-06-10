@@ -1,11 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^17.0.40
   '@vuepress/client': 2.0.0-beta.46
   vue: ^3.2.36
   vuepress: 2.0.0-beta.46
 
 devDependencies:
+  '@types/node': registry.npmmirror.com/@types/node/17.0.40
   '@vuepress/client': registry.npmmirror.com/@vuepress/client/2.0.0-beta.46
   vue: registry.npmmirror.com/vue/3.2.36
   vuepress: registry.npmmirror.com/vuepress/2.0.0-beta.46_n4rffxklnidyxbcijdu3ibrqha
@@ -79,7 +81,7 @@ packages:
     name: '@types/fs-extra'
     version: 9.0.13
     dependencies:
-      '@types/node': registry.npmmirror.com/@types/node/17.0.38
+      '@types/node': registry.npmmirror.com/@types/node/17.0.40
     dev: true
 
   registry.npmmirror.com/@types/linkify-it/3.0.2:
@@ -109,10 +111,10 @@ packages:
     version: 0.7.31
     dev: true
 
-  registry.npmmirror.com/@types/node/17.0.38:
-    resolution: {integrity: sha512-5jY9RhV7c0Z4Jy09G+NIDTsCZ5G0L5n+Z+p+Y7t5VJHM30bgwzSjVtlcBxqAj+6L/swIlvtOSzr8rBk/aNyV2g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-17.0.38.tgz}
+  registry.npmmirror.com/@types/node/17.0.40:
+    resolution: {integrity: sha512-UXdBxNGqTMtm7hCwh9HtncFVLrXoqA3oJW30j6XWp5BH/wu3mVeaxo7cq5benFdBw34HB3XDT2TRPI7rXZ+mDg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-17.0.40.tgz}
     name: '@types/node'
-    version: 17.0.38
+    version: 17.0.40
     dev: true
 
   registry.npmmirror.com/@vitejs/plugin-vue/2.3.3_vite@2.9.9+vue@3.2.36:

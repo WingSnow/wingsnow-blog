@@ -65,7 +65,7 @@ export function getNavbar(text: string, relativePath: string, excludes?: string[
 }
 
 export function genSideBar(text: string, collapsible: boolean, relativePath: string, excludes?: string[]) {
-    const components: any[] = []
+    const children: any[] = []
     const absolutePath = path.join(__dirname, '../../' + relativePath)
 
     const arr = readFiles(absolutePath, excludes)
@@ -80,18 +80,29 @@ export function genSideBar(text: string, collapsible: boolean, relativePath: str
         if (!excludesList.includes(item)) {
             let stat = fs.lstatSync(absolutePath + '/' + item)
             if (item == 'README.md') {
-                components.unshift(relativePath + '/')
+                children.unshift(relativePath + '/')
             } else if (!stat.isDirectory()) {
-                components.push(relativePath + '/' + item)
+                children.push(relativePath + '/' + item)
             } else {
-                components.push(genSideBar(item, false, relativePath + '/' + item))
+                children.push(genSideBar(item, false, relativePath + '/' + item))
             }
         }
     })
+
+    // 当一个目录下既有文件又有目录时，文件在前
+    children.sort((a, b) => {
+        if(typeof a === 'string' && typeof b !== 'string') {
+            return -1
+        } else if(typeof b === 'string' && typeof a !== 'string') {
+            return 1
+        }
+        return 0
+    })
+
     const frame = {
         text,
         collapsible,
-        children:components
+        children:children
     }
     // console.log(JSON.stringify(frame))
     return frame
