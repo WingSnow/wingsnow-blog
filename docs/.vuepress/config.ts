@@ -5,7 +5,7 @@ export default defineUserConfig({
   base: '/wingsnow-blog/',
   lang: 'zh-CN',
   title: '冬天吃雪糕的博客',
-  head: [['link', { rel: 'icon', href: '/favicon.ico'}]],
+  head: [['link', { rel: 'icon', href: '/wingsnow-blog/favicon.ico'}]],
   description: '冬天吃雪糕的博客',
   markdown: {
     extractHeaders: {
