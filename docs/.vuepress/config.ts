@@ -2,6 +2,7 @@ import { defineUserConfig, defaultTheme } from 'vuepress'
 import { genSideBar, getNavbar } from './utils/vue-press-sidebar-auto'
 
 export default defineUserConfig({
+  base: '/wingsnow-blog/',
   lang: 'zh-CN',
   title: '冬天吃雪糕的博客',
   head: [['link', { rel: 'icon', href: '/favicon.ico'}]],
