@@ -3,12 +3,14 @@ lockfileVersion: 5.4
 specifiers:
   '@types/node': ^17.0.40
   '@vuepress/client': 2.0.0-beta.46
+  '@vuepress/plugin-register-components': 2.0.0-beta.46
   vue: ^3.2.36
   vuepress: 2.0.0-beta.46
 
 devDependencies:
   '@types/node': registry.npmmirror.com/@types/node/17.0.40
   '@vuepress/client': registry.npmmirror.com/@vuepress/client/2.0.0-beta.46
+  '@vuepress/plugin-register-components': registry.npmmirror.com/@vuepress/plugin-register-components/2.0.0-beta.46
   vue: registry.npmmirror.com/vue/3.2.36
   vuepress: registry.npmmirror.com/vuepress/2.0.0-beta.46_n4rffxklnidyxbcijdu3ibrqha
 
@@ -444,6 +446,18 @@ packages:
     dependencies:
       '@vuepress/core': registry.npmmirror.com/@vuepress/core/2.0.0-beta.46
       prismjs: registry.npmmirror.com/prismjs/1.28.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  registry.npmmirror.com/@vuepress/plugin-register-components/2.0.0-beta.46:
+    resolution: {integrity: sha512-isDO5gVkPbBfe1hfIn2z5eH5B/xBmOnTlOC9kiMfY65WdWGBpCl/qvdkjsWkcsary+jgKFvBom3bXZzING/JmQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vuepress/plugin-register-components/-/plugin-register-components-2.0.0-beta.46.tgz}
+    name: '@vuepress/plugin-register-components'
+    version: 2.0.0-beta.46
+    dependencies:
+      '@vuepress/core': registry.npmmirror.com/@vuepress/core/2.0.0-beta.46
+      '@vuepress/utils': registry.npmmirror.com/@vuepress/utils/2.0.0-beta.46
+      chokidar: registry.npmmirror.com/chokidar/3.5.3
     transitivePeerDependencies:
       - supports-color
     dev: true

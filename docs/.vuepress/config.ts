@@ -1,5 +1,7 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
 import { genSideBar, getNavbar } from './utils/vue-press-sidebar-auto'
+import registerComponentsPlugin from '@vuepress/plugin-register-components'
+import path from 'path'
 
 export default defineUserConfig({
   base: '/wingsnow-blog/',
@@ -13,6 +15,12 @@ export default defineUserConfig({
     }
   },
 
+  plugins: [
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components'),
+    }),
+  ],
+
   theme: defaultTheme({
     logo: 'logo.png',
     contributors: false,
@@ -24,9 +32,10 @@ export default defineUserConfig({
     navbar: [
       getNavbar('前端', '/web'),
       getNavbar('Ubuntu系列', '/ubuntu'),
+      getNavbar('通用', '/common'),
       {
         text: '我的主页',
-        link: 'https://www.baidu.com/',
+        link: 'http://www.wingsnow.cn',
       },
       {
         text: 'Github',
@@ -35,9 +44,9 @@ export default defineUserConfig({
     ],
     sidebar: {
       '/web': [
-        genSideBar('Vue系列', true, '/web/vue'),
         genSideBar('javascript系列', true, '/web/javascript'),
-        genSideBar('nodejs系列', true, '/web/nodejs')
+        genSideBar('nodejs系列', true, '/web/nodejs'),
+        genSideBar('Vue系列', true, '/web/vue'),
       ],
       '/ubuntu': [
         // genSideBar('VuePress参考', true, '/reference', [ 'bundler' ]),

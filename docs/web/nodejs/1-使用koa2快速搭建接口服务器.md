@@ -1,6 +1,6 @@
-# 使用koa2快速搭建接口服务器
+# ⚙使用 koa2 快速搭建接口服务器
 
-## 使用koa-generator
+## 使用 koa-generator
 
 koa2提供了一个生成器`koa-generator`，用于生成一个项目脚手架，方便开箱即用。
 
@@ -126,11 +126,11 @@ router.get('/foo', async (ctx, next) => {
 module.exports = router
 ```
 
-::: tip 
+::: tip
 
 如果是使用`pnpm start`命令运行项目的，修改后需要重新运行程序才会生效； koa-generator 也集成了 nodemon 实现热更新，对应的启动项目命令为`pnpm dev`。
 
-但是在笔者的环境（win10，powershell7）下，自动生成的 dev 脚本无法运行，需要改成`nodemon bin/www`。
+顺带一提，自动生成的 dev 脚本为`./node_modules/.bin/nodemon bin/www`。实际上由于在执行script是`./node_modules/.bin/`会自动添加到环境的 PATH 变量，所以可以简写成`nodemon bin/www`。
 
 ```json {5}
 {
