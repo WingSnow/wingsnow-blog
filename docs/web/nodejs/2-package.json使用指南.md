@@ -339,9 +339,9 @@ npm set init.license "MIT"
 
 `package-lock.json`会固化当前安装的每个软件包的版本。
 
-当运行 `npm install`时，`npm`会检查是否存在`package-lock.json`文件，如有，则会使用这些确切的版本，而忽略`package.json`文件；如果没有，则会在安装后根据所安装的版本自动生成`package-lock.json`文件。
+当不指定包的版本运行 `npm install`时，`npm`会检查是否存在`package-lock.json`文件，如有，则会使用这些确切的版本，而忽略`package.json`文件；如果没有，则会在安装后根据所安装的版本自动生成`package-lock.json`文件。
 
-而运行 `npm update`时，则会根据`package.json`文件在设置的范围内更新到最新版本，然后更新`package-lock.json`文件。
+而当指定版本（或版本范围）运行`npm install`或 `npm update`时，则会根据指定版本（或版本范围）或`package.json`文件在设置的范围内更新到最新版本，然后更新`package-lock.json`文件。
 
 当`npm`操作`node_modules`或者`package.json`文件时，`package-lock.json`文件被自动更新。
 
@@ -350,6 +350,7 @@ npm set init.license "MIT"
 
 在开发一个 npm包 时，npm包是需要被其他仓库依赖的，如果锁定了依赖包版本，你的依赖包就不能和其他依赖包共享同一 semver 范围内的依赖包，这样会造成不必要的冗余。所以我们不应该把`package-lock.json`文件发布出去
 :::
+
 
 ## npm script 使用指南
 
