@@ -1,0 +1,1 @@
+const e={key:"v-0e7fabf5",path:"/web/javascript/3-foreach%E3%80%81map%E3%80%81reduce%E5%92%8Cpromise.html",title:"forEach\u3001map\u3001reduce\u548CPromise",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1657685138e3},filePathRelative:"web/javascript/3-foreach\u3001map\u3001reduce\u548Cpromise.md"};export{e as data};

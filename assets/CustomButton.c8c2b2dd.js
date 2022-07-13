@@ -1,0 +1,1 @@
+import{_ as o,h as s,o as a,c as u,x as n,E as _}from"./app.367485e6.js";const r=s({name:"CustomButton",props:{type:{default:"default"}},setup(t){return(e,l)=>(a(),u("button",{type:"button",class:_([t.type,"button"])},[n(e.$slots,"default",{},void 0,!0)],2))}});var p=o(r,[["__scopeId","data-v-7c5fc4ee"],["__file","CustomButton.vue"]]);export{p as default};
