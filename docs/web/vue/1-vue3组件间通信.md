@@ -1,4 +1,4 @@
-# Vue3组件间通信
+# Vue3 组件间通信
 
 ![](https://img.shields.io/badge/vue-~3.2-brightgreen)
 

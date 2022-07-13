@@ -458,13 +458,13 @@ npm run prebuild && npm run build && npm run postbuild
 向`npm script`传入参数，要使用`--`标明。
 
 ```json
-"lint": "jshint **.js"
+"lint": "eslint **.js"
 ```
 
 向上面的npm run lint命令传入参数，必须写成下面这样。
 
 ```shell
-npm run lint --reporter checkstyle > checkstyle.xml
+npm run lint --o output.txt
 ```
 
 ### 常用脚本

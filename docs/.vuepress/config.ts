@@ -32,7 +32,7 @@ export default defineUserConfig({
     navbar: [
       getNavbar('前端', '/web'),
       getNavbar('Ubuntu系列', '/ubuntu'),
-      getNavbar('通用', '/common'),
+      getNavbar('杂七杂八', '/common'),
       {
         text: '我的主页',
         link: 'http://www.wingsnow.cn',
@@ -49,10 +49,11 @@ export default defineUserConfig({
         genSideBar('Vue系列', true, '/web/vue'),
       ],
       '/ubuntu': [
-        // genSideBar('VuePress参考', true, '/reference', [ 'bundler' ]),
-        // genSideBar('打包工具参考', true, '/reference/bundler'),
-		    genSideBar('Ubuntu系列', true, '/ubuntu'),
+		    genSideBar('Ubuntu系列', false, '/ubuntu'),
       ],
+      '/common': [
+        genSideBar('杂七杂八', false, '/common'),
+      ]
     }
   })
 
