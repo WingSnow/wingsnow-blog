@@ -1,3 +1,15 @@
+---
+order: 2
+date: 2022-06-16
+category:
+  - 代码笔记
+  - Javascript笔记
+tag:
+  - Web
+  - Javascript
+  - VSCode
+description: 本文介绍如何在 VSCode 中进行 Linter 配置。
+---
 # Linter 配置指南
 
 ::: tip 参考资料
@@ -89,23 +101,21 @@ pnmp i -D eslint
 
 现在 ESLint 会提示找不到配置文件（No ESLint configuration found）。在项目根目录新建一个`.eslintrc.js`配置文件，导出一个空对象。
 
-<CodeGroup>
-  <CodeGroupItem title="javascript" active>
+::: code-tabs
+
+@tab javascript
 
 ```javascript
 module.exports = {};
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title="json">
+@tab json
 
 ```json
 {}
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+:::
 
 ::: tip
 ESLint 的配置文件也可以使用`json`格式，即`.eslintrc.json`。
@@ -267,23 +277,21 @@ pnpm i -D prettier
 
 在项目根目录新建一个`.prettierrc.js`配置文件，同样导出空对象。
 
-<CodeGroup>
-  <CodeGroupItem title="javascript" active>
+::: code-tabs
+
+@tab javascript
 
 ```javascript
 module.exports = {};
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title="json">
+@tab json
 
 ```json
 {}
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+:::
 
 前面提到，Prettier 作为一个 opinionated 的代码格式化工具，内置了一套建议使用的标准规范，所以 Prettier 的基础配置就是`{}`，并且通常不会在里面添加太多的配置，不然也就失去了使用 Prettier 的意义了。
 
@@ -303,8 +311,9 @@ pnpx prettier --write .
 pnpx prettier --check .
 ```
 
-<CodeGroup>
-  <CodeGroupItem title="格式化后" active>
+::: code-tabs
+
+@tab 格式化后
 
 ```javascript
 // 需要报 for-direction Linter error
@@ -332,9 +341,7 @@ console.log("result", x, y);
 console.log(hi, aa);
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title="格式化前">
+@tab 格式化前
 
 ```javascript
 // 需要报 for-direction Linter error
@@ -360,8 +367,7 @@ console.log('result'
 console.log(hi,        aa)
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+:::
 
 #### IDE集成
 
@@ -500,8 +506,9 @@ pnpm i -D typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
 
 然后创建如下有”问题“的 typescript 代码和类型声明。
 
-<CodeGroup>
-  <CodeGroupItem title="messyTS.ts" active>
+::: code-tabs
+
+@tab messyTS.ts
 
 ```typescript
 const x =       1
@@ -529,7 +536,7 @@ console.log(hello);
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="messyTypes.d.ts">
+@tab messyTypes.d.ts
 
 ```typescript
 type Hello = {
@@ -537,8 +544,7 @@ type Hello = {
 }
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+:::
 
 再用`tsc --init`创建一个`tsconfig.json`，没有它是无法在 IDE 里做自动类型检查的。
 
@@ -1130,8 +1136,9 @@ pnpm i -D postcss-html stylelint-config-standard-vue
 
 #### 配置文件
 
-<CodeGroup>
-  <CodeGroupItem title=".eslintrc.js" active>
+::: code-tabs
+
+@tab .eslintrc.js
 
 ```javascript
 module.exports = {
@@ -1193,9 +1200,7 @@ module.exports = {
 
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title=".prettierrc.js">
+@tab .prettierrc.js
 
 ```javascript
 module.exports = {
@@ -1207,9 +1212,7 @@ module.exports = {
 
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title=".editorconfig">
+@tab .editorconfig
 
 ```shell
 # http://editorconfig.org
@@ -1235,9 +1238,7 @@ trim_trailing_whitespace = false
 
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title=".stylelintrc.js">
+@tab .stylelintrc.js
 
 ```javascript
 module.exports = {
@@ -1265,9 +1266,7 @@ module.exports = {
 
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title=".eslintignore">
+@tab .eslintignore
 
 ```shell
 # 包含部分.开头的配置文件
@@ -1276,8 +1275,7 @@ module.exports = {
 
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+:::
 
 ### Koa
 
@@ -1294,8 +1292,9 @@ pnpm i -D eslint-plugin-import eslint-config-airbnb-base eslint-config-airbnb-ty
 
 #### 配置文件
 
-<CodeGroup>
-  <CodeGroupItem title=".eslintrc.js" active>
+::: code-tabs
+
+@tab .eslintrc.js
 
 ```javascript
 module.exports = {
@@ -1337,9 +1336,7 @@ module.exports = {
 
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title=".prettier.js">
+@tab .prettier.js
 
 ```javascript
 module.exports = {
@@ -1351,9 +1348,7 @@ module.exports = {
 
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title=".editorconfig">
+@tab .editorconfig
 
 ```shell
 # http://editorconfig.org
@@ -1376,9 +1371,7 @@ insert_final_newline = true
 
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title=".eslintignore">
+@tab .eslintignore
 
 ```shell
 # 包含部分.开头的配置文件
@@ -1386,5 +1379,4 @@ insert_final_newline = true
 
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+:::

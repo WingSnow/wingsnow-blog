@@ -4,7 +4,8 @@
 <img src="https://img.shields.io/badge/vue-3.2-brightgreen">
 <img src="https://img.shields.io/badge/vuepress-2.0-brightgreen"></p>
 
-个人博客：[blog.wingsnow.cn](http://blog.wingsnow.cn)
+个人主页：[www.wingsnow.cn](http://www.wingsnow.cn)
+个人博客：[wingsnow.github.io/wingsnow-blog/](https://wingsnow.github.io/wingsnow-blog/)
 
 ## 安装
 

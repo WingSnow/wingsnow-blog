@@ -1,3 +1,15 @@
+---
+order: 3
+date: 2022-06-16
+category:
+  - 代码笔记
+  - Vue笔记
+tag:
+  - Web
+  - Vue
+  - Vite
+description: 本文介绍在 vite 项目中如何使用 cdn 加载库文件，以减少打包构件的体积。
+---
 # Vite 使用 cdn 加载库文件
 
 ## 创建项目

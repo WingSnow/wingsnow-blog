@@ -1,3 +1,14 @@
+---
+order: 1
+date: 2022-06-06
+category:
+  - 代码笔记
+  - Vue笔记
+tag:
+  - Web
+  - Vue
+description: 本文介绍在使用 vue3 setup 语法的情况下，如何实现组件间通信。
+---
 # Vue3 组件间通信
 
 ![](https://img.shields.io/badge/vue-~3.2-brightgreen)

@@ -1,3 +1,14 @@
+---
+order: 3
+date: 2022-06-22
+category:
+  - 代码笔记
+  - Javascript笔记
+tag:
+  - Web
+  - Javascript
+description: 本文介绍forEach、map、reduce和promise的基础知识、应用场景以及使用过程中的注意事项。
+---
 # forEach、map、reduce和Promise
 
 ::: tip 参考资料

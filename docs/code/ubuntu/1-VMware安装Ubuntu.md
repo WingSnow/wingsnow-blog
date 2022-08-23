@@ -1,3 +1,12 @@
+---
+order: 1
+date: 2022-06-06
+category:
+  - 后端运维
+tag:
+  - Ubuntu
+description: 本文介绍如何在 VMware 虚拟机中安装 Ubuntu 并完成基本配置。
+---
 # VMware安装Ubuntu
 
 ## 下载安装VMware和Ubuntu

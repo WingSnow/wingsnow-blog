@@ -1,5 +1,14 @@
 ---
-sidebarDepth: 3
+order: 2
+date: 2022-06-06
+category:
+  - 代码笔记
+  - Vue笔记
+tag:
+  - Web
+  - Vue
+  - VSCode
+description: 本文介绍在 VSCode 中如何添加适用于 Vue3 的代码片段（Snippets）。
 ---
 # 在 VSCode 添加代码片段
 

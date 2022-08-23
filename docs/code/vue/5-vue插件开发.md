@@ -1,3 +1,14 @@
+---
+order: 5
+date: 2022-07-07
+category:
+  - 代码笔记
+  - Vue笔记
+tag:
+  - Web
+  - Vue
+description: 本文介绍开发 vue 插件的基础知识。
+---
 # Vue 插件开发
 
 ## 理论部分

@@ -1,3 +1,15 @@
+---
+order: 5
+date: 2022-06-21
+category:
+  - 代码笔记
+  - Javascript笔记
+tag:
+  - Web
+  - Javascript
+  - NodeJS
+description: 本文介绍 package.json 的相关知识，主要字段的说明以及 script 脚本的使用方法。
+---
 # package.json 使用指南
 
 ::: tip 参考资料

@@ -1,3 +1,15 @@
+---
+order: 4
+date: 2022-07-06
+category:
+  - 代码笔记
+  - Vue笔记
+tag:
+  - Web
+  - Vue
+  - Vite
+description: 本文介绍在 vite 项目中如何导入静态资源。
+---
 # Vue 批量导入静态资源
 
 ::: warning

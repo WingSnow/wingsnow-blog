@@ -1,3 +1,12 @@
+---
+order: 2
+date: 2022-06-06
+category:
+  - 后端运维
+tag:
+  - Ubuntu
+description: 本文介绍如何在 Ubuntu 操作系统中配置 node 环境。
+---
 # 配置node环境
 
 ## 安装nvm
