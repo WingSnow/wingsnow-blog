@@ -8,7 +8,7 @@ export default defineUserConfig({
   title: "冬天吃雪糕的博客",
   description: "",
 
-  base: "/",
+  base: "/wingsnow-blog/",
 
   theme,
 
