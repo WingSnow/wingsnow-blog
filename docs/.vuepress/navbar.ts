@@ -8,14 +8,29 @@ export default navbar([
     prefix: "/code/",
     children: [
       {
-        text: "Vue笔记",
-        icon: "vue",
-        link: "vue/",
+        text: "Web前端",
+        children: [
+          {
+            text: "Vue笔记",
+            icon: "vue",
+            link: "vue/",
+          },
+          {
+            text: "JavaScript笔记",
+            icon: "javascript",
+            link: "javascript/",
+          },
+        ]
       },
       {
-        text: "JavaScript笔记",
-        icon: "javascript",
-        link: "javascript/",
+        text: "游戏开发",
+        children: [
+          {
+            text: "Unity笔记",
+            icon: "view",
+            link: "unity/",
+          }
+        ]
       },
       {
         text: "后端运维",
