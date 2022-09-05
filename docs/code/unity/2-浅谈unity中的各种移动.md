@@ -195,10 +195,10 @@ public class CubeController : MonoBehaviour
     {
         // 从 Input 类中获取用户输入
         float xAxis = Input.GetAxis("Horizontal");
-        float yAxis = Input.GetAxis("Vertical");
+        float zAxis = Input.GetAxis("Vertical");
         Vector3 pos = transform.position;
         pos.x += xAxis * speed * Time.deltaTime;
-        pos.y += yAxis * speed * Time.deltaTime;
+        pos.z += zAxis * speed * Time.deltaTime;
         transform.position = pos;
     }
 }
@@ -246,7 +246,7 @@ public class CubeController : MonoBehaviour
     public float speed = 1.0f;
     
     float xAxis;
-    float yAxis;
+    float zAxis;
     // 使用 new 修饰符显式隐藏从 MonoBehaviour 中继承的同名成员变量
     new Rigidbody rigidbody;
 
@@ -260,15 +260,15 @@ public class CubeController : MonoBehaviour
         // 从 Input 类中获取用户输入
         // 不应该在 Fixedupdate 中的读取输入。FixedUpdate 不会持续运行，因此有可能会错过用户输入。
         xAxis = Input.GetAxis("Horizontal");
-        yAxis = Input.GetAxis("Vertical");
+        zAxis = Input.GetAxis("Vertical");
     }
 
     void FixedUpdate()
     {
         Vector3 pos = rigidbody.position;
-        // 在 FixedUpdate 中，Time.deltaTime 要改成 Time.fixedDeltaTime
-        pos.x += xAxis * speed * Time.fixedDeltaTime;
-        pos.y += yAxis * speed * Time.fixedDeltaTime;
+        // 在 FixedUpdate 中访问 Time.deltaTime，实际返回的是 Time.fixedDeltaTime
+        pos.x += xAxis * speed * Time.deltaTime;
+        pos.z += zAxis * speed * Time.deltaTime;
         // 也可以直接为 rigidbody.position 赋值来更新刚体的位置
         // 但在需要持续移动时，推荐使用 MovePosition()，它会考虑插值
         rigidbody.MovePosition(position);
@@ -276,8 +276,6 @@ public class CubeController : MonoBehaviour
 }
 ```
 
-当需要直接影响物理组件或对象（例如刚体）时，使用`FixedUpdate()`函数（而不是`Update()`）
+当需要直接影响物理组件或对象（例如刚体）时，使用`FixedUpdate()`函数（而不是`Update()`）。但是不应该在`Fixedupdate()`中的读取输入，因为它不会在每一帧都运行，有可能会因此错过用户输入。
 
-不应该在 Fixedupdate 中的读取输入。FixedUpdate 不会持续运行，因此有可能会错过用户输入。
-
-在需要持续移动时，推荐使用`MovePosition()`，它会考虑插值。
+在需要持续移动时，推荐使用`MovePosition()`，它会通过插值将刚体平滑地移动到目标点（仅当`Rigidbody.interpolation`启用时）。

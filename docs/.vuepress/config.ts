@@ -7,6 +7,7 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "冬天吃雪糕的博客",
   description: "",
+  head: [['link', { rel: 'icon', href: './favicon.ico' }]],
 
   base: "/wingsnow-blog/",
 
