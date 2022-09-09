@@ -69,12 +69,12 @@ _.shuffle([1, 2, 3, 4]);
  * @return Returns the new shuffled array.
  */
 const shuffle = <T>(collection: Array<T>) => {
-    const array = [...collection]
+  const array = [...collection]
   const length = array.length
   const lastIndex = length - 1
 
   for (let i = 0; i < lastIndex; i+=1) {
-    const rand = Math.floor(Math.random() * (lastIndex - i+ 1)) + i
+    const rand = Math.floor(Math.random() * (lastIndex - i + 1)) + i
     ;[array[rand], array[i]] = [array[i], array[rand]]
   }
 

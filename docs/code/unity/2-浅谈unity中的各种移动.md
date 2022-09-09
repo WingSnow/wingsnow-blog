@@ -55,7 +55,7 @@ public class MoveOnTime : MonoBehaviour
 {
     public Vector3 p0 = Vector3.zero;
     public Vector3 p1 = new Vector3(3, 4, 5);
-    public float timeDuration = 1;
+    public float timeDuration = 1f;
     public bool checkToCalculate = false;
 
     bool onMoving = false;
