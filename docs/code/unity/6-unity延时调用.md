@@ -214,7 +214,8 @@ public class Example : MonoBehaviour
     IEnumerator WaitForReachTarget() 
     {
         Vector3 curPos = transform.position;
-        while (!Mathf.Approximately(Vector3.Distance(curPos, target), 0)){
+        while (!Mathf.Approximately(Vector3.Distance(curPos, target), 0))
+        {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             curPos = transform.position;
             yield return null;
