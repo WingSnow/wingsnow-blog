@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 10
 date: 2022-09-15
 category:
   - 代码笔记
@@ -11,7 +11,7 @@ description: 本文介绍 Unity 的数据容器类 ScriptableObject，如何通�
 
 # Unity 数据容器类 ScriptableObject
 
-::: info 参考资料
+::: tip 参考资料
 
 [Unity进阶：ScriptableObject使用指南_YY-nb的博客](https://blog.csdn.net/qq_46044366/article/details/124310241)
 
@@ -36,11 +36,11 @@ description: 本文介绍 Unity 的数据容器类 ScriptableObject，如何通�
 - `ScriptableObject`是一个基类，继承自`UnityEngine.Object`，因此我们在使用时要自定义类来继承它。要注意的是，与`MonoBehaviour`不同，不能将`ScriptableObject`挂载到游戏对象上。
 - 多个对象共用相同的数据时，可以使用同一个`ScriptableObject`实例，共用一份数据。
 - `ScriptableObject`类的实例会被保存成资源文件（.asset文件），和预制体、材质球、音频文件等类似，存放在 Assets 文件夹中。因此可以持久化存储，并在项目之间、场景之间共享。
-- 在运行模式下修改`ScriptableObject`的数据，在游戏推出后也会被保存下来（毕竟其实是在修改资源）。
+- 在运行模式下修改`ScriptableObject`实例的数据，在游戏推出后也会被保存下来（毕竟其实是在修改资源）。
 
 ::: warning
 
-在 Editor 中，可以在编辑模式或运行模式下修改`ScriptableObject`的数据，修改的结果会保存在磁盘上，实现持久化存储。但是在发布构建后运行时，即使在游戏过程中修改了`ScriptableObject`的数据，也不会保存在本地，重新打开运行时数据还是配置的初始数据。
+在 Editor 中，可以在编辑模式或运行模式下修改`ScriptableObject`实例的数据，修改的结果会保存在磁盘上，实现持久化存储。但是在发布构建后运行时，即使在游戏过程中修改了`ScriptableObject`实例的数据，也不会保存在本地，重新打开运行时还是配置的初始数据。
 
 因此`ScriptableObject`适合使用在开发期间配置和调试数据。
 
@@ -62,7 +62,7 @@ public class BulletDate : ScriptableObject
 }
 ```
 
-### 为数据容器类创建实例（.asset数据资源文件）的方法
+### 为数据容器类添加创建实例（.asset数据资源文件）的方法
 
 上一节中声明的数据容器类相当于一个数据的模板，接下来就要根据这个模板创建具体的数据。因为这个模板是类，所以具体的数据文件其实就是实例。由于数据文件在 Editor 中是以资源的形式存在的，因此一般也使用类似于创建其他资源（材质球、动画等）的方式来创建数据资源文件。
 
@@ -79,9 +79,9 @@ public class BulletDate : ScriptableObject
 }
 ```
 
-fileName 表示创建的数据文件默认文件名为 BulletDate
-menuName 表示会在 Assets/Create 菜单下增加 ScriptableObjects/BulletDate 的选项
-order 表示该选项的排序（从0开始）
+- fileName 表示创建的数据文件默认文件名为 BulletDate
+- menuName 表示会在 Assets/Create 菜单下增加 ScriptableObjects/BulletDate 的选项
+- order 表示该选项的排序（从0开始）
 
 现在通过 Editor 的 Assets/Create 菜单（可以通过上方菜单栏的 Assets 或者在 Project 面板右键等方式访问）找到 ScriptableObjects/BulletDate，点击该选项后，就会创建一个数据资源文件。选中该文件，就可以在 Inspector 面板中配置数据了。
 
