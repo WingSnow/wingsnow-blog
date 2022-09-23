@@ -53,8 +53,6 @@ description: 本文介绍 Unity 的数据容器类 ScriptableObject，如何通�
 首先我们要创建一个脚本继承自`ScriptableObject`类，并在该类中声明成员，这些成员表示该数据容器需要保存哪些数据。为了后续在 Inspector 面板中可以看到这些数据，需要将它们声明为 public。
 
 ```csharp
-using UnityEngine;
-
 public class BulletDate : ScriptableObject
 {
     public float speed;
@@ -69,8 +67,6 @@ public class BulletDate : ScriptableObject
 为此需要`CreateAssetMenu`属性。
 
 ```csharp
-using UnityEngine;
-
 [CreateAssetMenu(fileName = "BulletDate", menuName = "ScriptableObjects/BulletDate", order = 1)]
 public class BulletDate : ScriptableObject
 {
@@ -92,8 +88,6 @@ public class BulletDate : ScriptableObject
 例如在不使用`ScriptableObject`的时候，在子弹预制体上可能挂载着这样的脚本:
 
 ```csharp
-using UnityEngine;
-
 public class Bullet : MonoBehaviour
 {
     public float speed;
@@ -108,8 +102,6 @@ public class Bullet : MonoBehaviour
 使用`ScriptableObject`之后就改成这样：
 
 ```csharp
-using UnityEngine;
-
 public class Bullet : MonoBehaviour
 {
     public BulletDate bulletDate;
@@ -142,3 +134,104 @@ public class Bullet : MonoBehaviour
     }
 }
 ```
+
+## 使用 ScriptableObject 配置事件
+
+除了配置数据属性外，有时候还需要配置自定义事件。还是以子弹为例子，不同类型的子弹在命中时可能有不同的效果，可能是造成伤害，附加异常状态等。虽然通用的效果可以使用参数化的方式来配置，但还是避免不了要自己写方法。这时候就需要在子弹的数据资源文件上绑定方法，然后在游戏对象就可以通过访问该资源文件来调用它。
+
+根据目前查到的资料，只能通过**反射**来实现。
+
+```csharp{6}
+[CreateAssetMenu(fileName = "BulletDate", menuName = "ScriptableObjects/BulletDate", order = 1)]
+public class BulletDate : ScriptableObject
+{
+    public float speed;
+    public float damage;
+    public string impactName;
+}
+```
+
+在`ScriptableObject`中增加一个字符串类型的属性，用来存储执行具体方法的类名。
+
+之后定义一个接口，在其中定义要调用的方法
+
+```csharp
+public interface IImpact
+{
+    void Execute(BulletDate bulletDate, GameObject target);
+}
+```
+
+之后根据需求编写实现该接口的类，注意**类名要和`BulletDate.impactName`的字符串一致**。
+
+例如有如下的`Blaster`类，则在`BulletDate`的`impactName`处也要填写 "Blaster"(区分大小写)。
+
+```csharp
+public class Blaster : IImpact
+{
+    public void Execute(BulletDate bulletDate, GameObject target)
+    {
+        // do something here
+        print("Blaster execute");
+    }
+}
+```
+
+然后利用 C# 的反射来创建指定类的实例。
+
+```csharp
+public class Bullet : MonoBehaviour
+{
+    public BulletDate bulletDate;
+    public IImpact impact;
+
+    void Awake() {
+      Type type = Type.GetType(bulletDate.impactName);
+      impact = Activator.CreateInstance(type) as IImpact;
+    }
+
+    void OnBulletHit(GameObject target) {
+        impact.Execute(target);
+    }
+}
+```
+
+上面的例子可以工作，但是会导致一个问题，现在每一个子弹 Bullet 实例都会持有一个 IImpact 的实例。因为该效果是与数据资源文件相关的，数据资源文件是唯一的，那 IImpact 实例也应该是唯一的，而这个实例应该由数据资源文件（`ScriptableObject`实例）来持有。
+
+根据这个思路，可以将上面的代码做一些改造。
+
+```csharp
+[CreateAssetMenu(fileName = "BulletDate", menuName = "ScriptableObjects/BulletDate", order = 1)]
+public class BulletDate : ScriptableObject
+{
+    public float speed;
+    public float damage;
+    public string impactName;
+
+    public IImpact impact{
+      get;
+      private set;
+    }
+
+    void Awake()
+    {
+        Type type = Type.GetType(impactName);
+        impact = Activator.CreateInstance(type) as IImpact;
+    }
+}
+```
+
+```csharp
+public class Bullet : MonoBehaviour
+{
+    public BulletDate bulletDate;
+
+    void OnBulletHit(GameObject target) {
+        bulletDate.impact.Execute(target);
+    }
+}
+```
+
+从上面的代码可以看出，由于`ScriptableObject`其实也是一个 C# 类，所以自然也可以在其中编写自定义的变量、属性和方法，而且和`MonoBehaviour`类似，`ScriptableObject`也有其生命周期中自动调用的事件函数，例如`Awake`、`OnEnable`、`OnDestroy`等，但比`MonoBehaviour`要少很多。
+
+经过上面的改造之后，现在每一个子弹 Bullet 持有的都是同一个 bulletDate 实例，而该 bulletDate 实例持有一个 IImpact 实例，在 Bullet 的代码中可以访问并调用 IImpact 的方法。
