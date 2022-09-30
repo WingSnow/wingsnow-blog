@@ -208,15 +208,17 @@ public class BulletDate : ScriptableObject
     public float damage;
     public string impactName;
 
-    public IImpact impact{
-      get;
-      private set;
-    }
-
-    void Awake()
+    private IImpact _impact;
+    public IImpact impact
     {
-        Type type = Type.GetType(impactName);
-        impact = Activator.CreateInstance(type) as IImpact;
+        get {
+            if (_impact == null) 
+            {
+                Type type = Type.GetType(impactName);
+                _impact = Activator.CreateInstance(type) as IImpact;
+            }
+            return _impact;
+        };
     }
 }
 ```
@@ -232,6 +234,6 @@ public class Bullet : MonoBehaviour
 }
 ```
 
-从上面的代码可以看出，由于`ScriptableObject`其实也是一个 C# 类，所以自然也可以在其中编写自定义的变量、属性和方法，而且和`MonoBehaviour`类似，`ScriptableObject`也有其生命周期中自动调用的事件函数，例如`Awake`、`OnEnable`、`OnDestroy`等，但比`MonoBehaviour`要少很多。
+从上面的代码可以看出，由于`ScriptableObject`其实也是一个 C# 类，所以自然也可以在其中编写自定义的变量、属性和方法。此外和`MonoBehaviour`类似，`ScriptableObject`也有其生命周期中自动调用的事件函数，例如`Awake`、`OnEnable`、`OnDestroy`等，但比`MonoBehaviour`要少很多。
 
 经过上面的改造之后，现在每一个子弹 Bullet 持有的都是同一个 bulletDate 实例，而该 bulletDate 实例持有一个 IImpact 实例，在 Bullet 的代码中可以访问并调用 IImpact 的方法。

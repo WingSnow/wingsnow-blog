@@ -44,6 +44,7 @@ export default hopeTheme({
 
     mdEnhance: {
       codetabs: true,
+      tex: true,
     }
   },
 });
