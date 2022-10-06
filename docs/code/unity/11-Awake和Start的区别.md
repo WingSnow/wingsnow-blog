@@ -86,7 +86,7 @@ public class Example2 : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            go3.GetComponent<Example3>()?.enable = true;
+            go3.GetComponent<Example3>().enabled = true;
         }
     }
 }

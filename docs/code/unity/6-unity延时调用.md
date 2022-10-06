@@ -238,6 +238,8 @@ public class Example : MonoBehaviour
 
 在上面的例子中，开始游戏后会先在控制台打印“start move”，然后游戏对象开始向目标点逐渐移动，在此过程中 Unity 的主线程不会被阻塞，也就是说其他的对象以及脚本也可以正常地运行。最后在游戏对象到达目标点后，控制台打印“reach Target”。
 
+另外要注意协程的生命周期，可以使用`StopCoroutine`和`StopAllCoroutines`来停止协程。当用`SetActive(false)`禁用或使用`Destroy`销毁某个协程所附加到的游戏对象时，该协程也将停止。协程附加的游戏对象是启用协程的对象，而不是定义协程的对象，例如在对象A中开启在对象B中定义的协程，A销毁后协程就会停止。
+
 ## 协程的局限性
 
 对于延时调用这种异步编程需求，Unity 建议使用协程来实现，但协程没有返回值，也不方便调试（不能将`yield return`语句置于`try-catch`块中）。
