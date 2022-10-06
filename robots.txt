@@ -1,0 +1,5 @@
+
+User-agent:*
+Disallow:
+
+Sitemap: https://wingsnow.github.io/wingsnow-blog/wingsnow-blog/sitemap.xml
